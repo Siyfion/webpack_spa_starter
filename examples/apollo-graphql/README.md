@@ -27,15 +27,30 @@ It is recommended that you inject the `ApolloProvider` component into your appli
 ```js
 import React from "react";
 import ReactDOM from "react-dom";
+
+import { AppContainer } from "react-hot-loader";
 import { ApolloProvider } from "react-apollo";
 import { client } from "./GraphQL/client";
-import "./index.css";
+
+import "./index.scss";
 import App from "./App";
 
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
-  document.getElementById("root")
-);
+const render = Component => {
+  ReactDOM.render(
+    <AppContainer>
+      <ApolloProvider client={client}>
+        <Component />
+      </ApolloProvider>
+    </AppContainer>,
+    document.getElementById("react-root")
+  );
+};
+
+render(App);
+
+if (module.hot) {
+  module.hot.accept("./App.js", () => {
+    render(App);
+  });
+}
 ```

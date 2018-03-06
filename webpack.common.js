@@ -1,11 +1,9 @@
 const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  entry: {
-    app: ['babel-polyfill', 'react-hot-loader/patch', './src/index.js']
-  },
   output: {
     // options related to how webpack emits results
 
@@ -33,28 +31,17 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
+        use: ['babel-loader']
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: { minimize: true }
-          }
-        ]
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
       }
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     new CopyWebpackPlugin([{ from: './public', to: 'assets' }])
-  ],
-  devServer: {
-    contentBase: path.join(__dirname, 'public'),
-    compress: true, // enable gzip compression
-    historyApiFallback: true // true for index.html upon 404, object for multiple paths
-  }
+  ]
 }
