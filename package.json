@@ -10,7 +10,8 @@
     "build": "webpack --mode production --config webpack.prod.js",
     "build-dev": "webpack --mode development --config webpack.dev.js",
     "lint": "standard --verbose | snazzy",
-    "lint-fix": "prettier --write 'src/**' && standard --verbose --fix | snazzy"
+    "lint-fix":
+      "prettier --write 'src/**/*.{js,json,css,scss,md,graphql}' && standard --verbose --fix | snazzy"
   },
   "husky": {
     "hooks": {
@@ -20,7 +21,7 @@
   "lint-staged": {
     "concurrent": false,
     "linters": {
-      "*.{js,json,css,md,graphql}": ["prettier --write", "git add"],
+      "*.{js,json,css,scss,md,graphql}": ["prettier --write", "git add"],
       "*.js": ["standard --verbose --fix | snazzy", "git add"]
     }
   },
