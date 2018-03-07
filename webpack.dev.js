@@ -4,7 +4,7 @@ const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
   entry: {
-    app: ['babel-polyfill', 'react-hot-loader/patch', './src/index.js']
+    app: ['react-hot-loader/patch', './src/index.js']
   },
   devtool: 'eval-source-map',
   devServer: {
