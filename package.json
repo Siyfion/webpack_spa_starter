@@ -1,0 +1,66 @@
+{
+  "name": "webpack_spa_starter",
+  "version": "1.0.0",
+  "description":
+    "This is an opinionated SPA starter kit, utilising Webpack 4 as a build tool, React as a UI Library, Standard JS as a code linting tool and Prettier as a code formatter.",
+  "main": "index.js",
+  "scripts": {
+    "start":
+      "webpack-dev-server --hot --mode development --config webpack.dev.js --open",
+    "build": "webpack --mode production --config webpack.prod.js",
+    "build-dev": "webpack --mode development --config webpack.dev.js",
+    "lint": "standard --verbose | snazzy",
+    "lint-fix":
+      "prettier --write 'src/**/*.{js,json,css,scss,md,graphql}' && standard --verbose --fix | snazzy"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "concurrent": false,
+    "linters": {
+      "*.{js,json,css,scss,md,graphql}": ["prettier --write", "git add"],
+      "*.js": ["standard --verbose --fix | snazzy", "git add"]
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.18",
+    "copy-webpack-plugin": "^4.5.0",
+    "css-loader": "^0.28.10",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.0.5",
+    "husky": "^0.15.0-rc.6",
+    "lint-staged": "^7.0.0",
+    "node-sass": "^4.7.2",
+    "prettier": "^1.11.1",
+    "react-hot-loader": "^4.0.0",
+    "sass-loader": "^7.0.1",
+    "snazzy": "^7.1.1",
+    "standard": "^11.0.0",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.1.0",
+    "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^3.1.0",
+    "webpack-merge": "^4.1.2"
+  },
+  "standard": {
+    "globals": [],
+    "ignore": ["node_modules/", "build/"]
+  }
+}
