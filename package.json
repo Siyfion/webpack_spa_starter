@@ -1,17 +1,14 @@
 {
   "name": "webpack_spa_starter",
   "version": "1.0.0",
-  "description":
-    "This is an opinionated SPA starter kit, utilising Webpack 4 as a build tool, React as a UI Library, Standard JS as a code linting tool and Prettier as a code formatter.",
+  "description": "This is an opinionated SPA starter kit, utilising Webpack 4 as a build tool, React as a UI Library, Standard JS as a code linting tool and Prettier as a code formatter.",
   "main": "index.js",
   "scripts": {
-    "start":
-      "webpack-dev-server --hot --mode development --config webpack.dev.js --open",
+    "start": "webpack-dev-server --hot --mode development --config webpack.dev.js --open",
     "build": "webpack --mode production --config webpack.prod.js",
     "build-dev": "webpack --mode development --config webpack.dev.js",
     "lint": "standard --verbose | snazzy",
-    "lint-fix":
-      "prettier --write 'src/**/*.{js,json,css,scss,md,graphql}' && standard --verbose --fix | snazzy"
+    "lint-fix": "prettier --write 'src/**/*.{js,json,css,scss,md,graphql}' && standard --verbose --fix | snazzy"
   },
   "husky": {
     "hooks": {
@@ -21,8 +18,14 @@
   "lint-staged": {
     "concurrent": false,
     "linters": {
-      "*.{js,json,css,scss,md,graphql}": ["prettier --write", "git add"],
-      "*.js": ["standard --verbose --fix | snazzy", "git add"]
+      "*.{js,json,css,scss,md,graphql}": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.js": [
+        "standard --verbose --fix | snazzy",
+        "git add"
+      ]
     }
   },
   "author": "",
@@ -61,6 +64,9 @@
   },
   "standard": {
     "globals": [],
-    "ignore": ["node_modules/", "build/"]
+    "ignore": [
+      "node_modules/",
+      "build/"
+    ]
   }
 }
