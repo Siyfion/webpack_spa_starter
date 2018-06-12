@@ -10,7 +10,9 @@ module.exports = merge(common, {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     compress: true, // enable gzip compression
-    historyApiFallback: true // true for index.html upon 404, object for multiple paths
+    historyApiFallback: true, // true for index.html upon 404, object for multiple paths
+    host: '0.0.0.0', // Allow the dev server to be accessible externally
+    port: 3000 // Run the dev server on port 3000
   },
   module: {
     rules: [
